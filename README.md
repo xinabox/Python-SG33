@@ -1,12 +1,11 @@
-[![GitHub Issues](https://img.shields.io/github/issues/xinabox/Python-XCHIP.svg)](https://github.com/xinabox/Python-XCHIP/issues) 
-![GitHub Commit](https://img.shields.io/github/last-commit/xinabox/Python-XCHIP) 
-![Maintained](https://img.shields.io/maintenance/yes/2020) 
-![Build status badge](https://github.com/xinabox/Python-XCHIP/workflows/Python/badge.svg)
+[![GitHub Issues](https://img.shields.io/github/issues/xinabox/Python-SG33.svg)](https://github.com/xinabox/Python-SG33/issues)
+![GitHub Commit](https://img.shields.io/github/last-commit/xinabox/Python-SG33)
+![Maintained](https://img.shields.io/maintenance/yes/2020)
+![Build status badge](https://github.com/xinabox/Python-SG33/workflows/Python/badge.svg)
 ![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)
 
-# Python-xChip
-
-Insert description of xChip
+# Python-SG33
+TODO - Insert description
 
 # Usage
 
@@ -22,7 +21,7 @@ Download [Mu-editor](https://github.com/xinabox/mu-editor/releases/tag/v1.1.0a2)
     sta_if = network.WLAN(network.STA_IF)
     sta_if.active(True)
     sta_if.connect("ssid", "password")
-    upip.install("xinabox-xChip")
+    upip.install("xinabox-sg33")
     ```
 
 ### CC03, CS11 and CW03
@@ -36,17 +35,21 @@ Download [Mu-editor](https://github.com/xinabox/mu-editor/releases/tag/v1.1.0a2)
 
 Requires Python 3
 ```
-pip3 install xinabox-xChip
+pip3 install xinabox-sg33
 ```
 
 # Example
 ```python
 from xCore import xCore
-from xSW01 import xSW01
+from xSG33 import xSG33
 
-SW01 = xSW01()
+SG33 = xSG33()
 
 while True:
-    print(SW01.values())
+    if SG33.dataAvailable() == True:
+        SG33.getAlgorithmResults()
+
+        print(SG33.getTVOC())
+        print(SG33.getCO2())
     xCore.sleep(1000)
 ```
